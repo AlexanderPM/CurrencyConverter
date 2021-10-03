@@ -1,0 +1,26 @@
+.defaultCouple{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    Justify-content: space-around;
+    background-color:#F5F5F5;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    border-radius: 3px;
+
+}
+.title{
+    color: #2C3E50;
+    margin-top: 5px;
+    text-transform:uppercase;
+}
+.iconSelect{
+    display: flex;
+    align-items: center;
+}
+.valueSelect{
+    margin-left: 10px;
+}
+.defaultCoupleContener{
+    margin-top: 30px;
+
+}

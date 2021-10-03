@@ -1,0 +1,7 @@
+.main{
+    display: grid;
+    grid-area: grid-main;
+    justify-content:center;
+    height: 2400px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}

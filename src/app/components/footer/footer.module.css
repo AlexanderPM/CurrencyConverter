@@ -1,0 +1,24 @@
+.footer{
+    background-color: #868686;
+    color: white;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    font-size: 15px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+.footer a{
+    color: white;
+}
+.footerContent{
+    margin-left: 40px;
+    align-self: center;
+}
+.footerContent p{
+    margin: 0px;
+}
+.footerIcons{
+    margin-right: 40px;
+    align-self: center;
+    width: 200px;
+}

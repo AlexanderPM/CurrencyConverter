@@ -1,0 +1,11 @@
+.table{
+    min-width: 920px; 
+}
+.iconItemTable{
+
+    display: flex;
+    align-items: center
+}
+.title{
+    text-transform:uppercase;
+}
