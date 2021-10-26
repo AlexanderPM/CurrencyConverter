@@ -114,6 +114,40 @@ class DefaultCouple extends React.Component {
                 return Mvf
             case "Российский рубль":
                 return Rub
+            case "Армянский драм":
+                return Armenia
+            case "Венгерский форинт":
+                return Hungary
+            case "Гонконгский доллар":
+                return HongKong
+            case "Индийская рупия":
+                return India
+            case "Казахстанский тенге":
+                return Kazakhstan
+            case "Киргизский сом":
+                return Kyrgyzstan
+            case "Молдавский лей":
+                return Moldavia
+            case "Норвежская крона":
+                return Norway
+            case "Таджикский сомони":
+                return Tajikistan
+            case "Турецкая лира":
+                return Turkey
+            case "Узбекский сум":
+                return Uzbekistan
+            case "Украинская гривна":
+                return Ukraine
+            case "Чешская крона":
+                return CzechRepublic
+            case "Шведская крона":
+                return Sweden
+            case "Южноафриканский рэнд":
+                return SouthAfrica
+            case "Японская иена":
+                return Japan
+            case "Южнокорейская вона":
+                return Korea
             default:
                 return "";
         }

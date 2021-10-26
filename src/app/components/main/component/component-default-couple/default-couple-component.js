@@ -75,8 +75,17 @@ class DefaultCoupleComponent extends React.Component {
         this.props.selectValuteSelectTwo(event.value, parseFloat(valueInputTwo).toFixed(2));
     }
 
+    
+
     render() {
 
+        if (this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelectOne)].CharCode){
+            console.log("переменная существует")
+        }else{
+            console.log("переменной нет!")
+        }
+
+        console.log(this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelectOne)].CharCode)
         return (
             <div className={styleClasses.defaultCoupleComponent}>
                 <p><strong>Валюта <span className={styleClasses.ValuteName}>
