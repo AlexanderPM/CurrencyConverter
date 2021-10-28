@@ -1,14 +1,12 @@
 import React from 'react';
 import styleClasses from './style-input.module.css'
 
-class InputComponent extends React.Component {
-
-    render() {
+const InputComponent = (props) => {
 
         return (        
-                <input typeof="text"  value={this.props.valueInput} 
+                <input typeof="text"  value={props.valueInput} 
                     className={styleClasses.SelectInput} 
-                    onChange={(event) => this.props.changeInput(event)}
+                    onChange={(event) => props.changeInput(event)}
                     onKeyPress={(event) => {
                         if (!/[0-9.]/.test(event.key)) {
                           event.preventDefault();
@@ -16,7 +14,6 @@ class InputComponent extends React.Component {
                       }}
                     ></input> 
         );
-    }
 }
 
 export default InputComponent;

@@ -5,10 +5,50 @@
     "grid-header"
     "grid-main"
     "grid-footer";
-    grid-template-rows:  100px 1fr 160px;
+    grid-template-rows:  160px 1fr 160px;
     grid-template-columns: 1fr;
     background-color:white;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+}
+
+.animations{
+display: flex;
+justify-content: center;
+margin-top: 100px;
+}
+.fetchining {
+    width                    : 100px;
+    height                   : 100px;
+    border-radius            : 100%;
+    margin                   : 10vh auto;
+    border                   : 4px dashed #48484A;
+    animation-name           : search-fetching;
+    animation-duration       : 1.2s;
+    animation-iteration-count: infinite;
+    animation-direction      : alternate;
+    animation-timing-function: linear;
+}
+
+.download{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background-color: #F9F9F9;
+    border-radius   : 20px;
+    opacity: 0.7;
+}
+.download_message{
+    align-self:center;
+    margin-bottom: 20px;
+}
+
+@keyframes search-fetching {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.5);
+    }
 }

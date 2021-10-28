@@ -4,6 +4,7 @@ import { DataGrid, ruRU } from '@material-ui/data-grid';
 import styleClasses from './table-components.module.css';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
   root: {
@@ -35,7 +36,9 @@ const StyledDataGrid = styled(DataGrid)`
 
 
 
-const TableMaterialUI = (props) => {
+const TableMaterialUI = () => {
+
+  const valuteState = useSelector(state => state.valuteState);
 
   const columns = [
     { field: 'id', headerName: 'Идектификатор', width: 100, hide: true },
@@ -158,7 +161,7 @@ const TableMaterialUI = (props) => {
 
   ];
 const arr = []
-Object.values(props.valuteState).map((element, index) => (
+Object.values(valuteState).map((element, index) => (
   arr.push({
     id: index, NumCode: element.NumCode,
     CharCode: element.CharCode, Nominal: element.Nominal,

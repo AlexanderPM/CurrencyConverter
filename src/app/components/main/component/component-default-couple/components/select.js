@@ -3,19 +3,15 @@ import React from 'react';
 import Select from 'react-select';
 import { customStyles } from './style-select.module.js'
 
-class SelectComponent extends React.Component {
-
-    render() {
+const SelectComponent = (props) => {
 
         return (
-
-            <Select styles={customStyles} options={this.props.getOptions()} onChange={(event) => this.props.changeSelect(event)}
+            <Select styles={customStyles} options={props.getOptions(props.valuteState)} onChange={(event) => props.changeSelect(event)}
                 value={{
-                    value: this.props.valuteSelect, label: this.props.getLabelSelect(this.props.valuteSelect,
-                        this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelect)].CharCode)
+                    value: props.valuteSelect, label: props.getLabelSelect(props.valuteSelect,
+                        props.valuteState[props.getIndexValute(props.valuteState, props.valuteSelect)].CharCode)
                 }} />
         );
-    }
 }
 
 export default SelectComponent;

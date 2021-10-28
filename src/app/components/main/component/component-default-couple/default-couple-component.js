@@ -2,10 +2,13 @@ import React from 'react';
 import styleClasses from './style.module.css'
 import InputComponent from './components/input';
 import SelectComponent from './components/select';
+import { useDispatch } from 'react-redux';
 
-class DefaultCoupleComponent extends React.Component {
+const DefaultCoupleComponent = (props) => {
 
-    inputControl(event) {
+    const dispatch = useDispatch();
+
+    const inputControl = (event) => {
 
         let countDot = ((event.target.value).match(/\./g) || []).length
 
@@ -24,15 +27,15 @@ class DefaultCoupleComponent extends React.Component {
     }
 
     //При изменении Input One 
-    changeInputOne = (event) => {
+    const changeInputOne = (event) => {
 
-        if (this.inputControl(event)) {
+        if (inputControl(event)) {
 
-            let courseValute = this.props.getCourse(this.props.valuteState, this.props.valuteSelectOne, this.props.valuteSelectTwo)
+            let courseValute = props.getCourse(props.valuteState, props.valuteSelectOne, props.valuteSelectTwo)
             let valueInputOne = event.target.value;
             let valueInputTwo = courseValute.courseOne / courseValute.courseTwo * valueInputOne
 
-            this.props.changeInputs((event.target.value), parseFloat(valueInputTwo).toFixed(2));
+            dispatch(props.changeInputs((event.target.value), parseFloat(valueInputTwo).toFixed(2)));
         }
         else {
             return;
@@ -40,93 +43,77 @@ class DefaultCoupleComponent extends React.Component {
     }
 
     //При изменении Input Two
-    changeInputTwo = (event) => {
+    const changeInputTwo = (event) => {
 
-        if (this.inputControl(event)) {
+        if (inputControl(event)) {
 
-            let courseValute = this.props.getCourse(this.props.valuteState, this.props.valuteSelectOne, this.props.valuteSelectTwo)
+            let courseValute = props.getCourse(props.valuteState, props.valuteSelectOne, props.valuteSelectTwo)
             let valueInputTwo = event.target.value;
             let valueInputOne = courseValute.courseTwo / courseValute.courseOne * valueInputTwo
 
-            this.props.changeInputs(parseFloat(valueInputOne).toFixed(2), (event.target.value));
+            dispatch(props.changeInputs(parseFloat(valueInputOne).toFixed(2), (event.target.value)));
         }
-
         else {
             return;
         }
     }
 
     //При изменении Select One 
-    changeSelectOne = (event) => {
+    const changeSelectOne = (event) => {
 
-        let courseValute = this.props.getCourse(this.props.valuteState, event.value, this.props.valuteSelectTwo)
-        let valueInputOne = this.props.valueInputOne;
+        let courseValute = props.getCourse(props.valuteState, event.value, props.valuteSelectTwo)
+        let valueInputOne = props.valueInputOne;
         let valueInputTwo = courseValute.courseOne / courseValute.courseTwo * valueInputOne
-        this.props.selectValuteSelectOne(event.value, parseFloat(valueInputTwo).toFixed(2));
+        
+        dispatch(props.selectValuteSelectOne(event.value, parseFloat(valueInputTwo).toFixed(2)));
     }
 
     //При изменении Select Two 
-    changeSelectTwo = (event) => {
+    const changeSelectTwo = (event) => {
 
-        let courseValute = this.props.getCourse(this.props.valuteState, this.props.valuteSelectOne, event.value)
-        let valueInputOne = this.props.valueInputOne;
+        let courseValute = props.getCourse(props.valuteState, props.valuteSelectOne, event.value)
+        let valueInputOne = props.valueInputOne;
         let valueInputTwo = courseValute.courseOne / courseValute.courseTwo * valueInputOne
 
-        this.props.selectValuteSelectTwo(event.value, parseFloat(valueInputTwo).toFixed(2));
+        dispatch(props.selectValuteSelectTwo(event.value, parseFloat(valueInputTwo).toFixed(2)));
     }
 
-    
-
-    render() {
-
-        if (this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelectOne)].CharCode){
-            console.log("переменная существует")
-        }else{
-            console.log("переменной нет!")
-        }
-
-        console.log(this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelectOne)].CharCode)
         return (
             <div className={styleClasses.defaultCoupleComponent}>
                 <p><strong>Валюта <span className={styleClasses.ValuteName}>
-                    {this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelectOne)].CharCode}</span></strong></p>
+                    {props.valuteState[props.getIndexValute(props.valuteState, props.valuteSelectOne)].CharCode}</span></strong></p>
 
                 <SelectComponent
-                    getOptions={this.props.getOptions}
-                    changeSelect={this.changeSelectOne}
-                    valuteSelect={this.props.valuteSelectOne}
-                    getLabelSelect={this.props.getLabelSelect}
-                    valuteState={this.props.valuteState}
-                    getIndexValute={this.props.getIndexValute}
+                    getOptions={props.getOptions}
+                    changeSelect={changeSelectOne}
+                    valuteSelect={props.valuteSelectOne}
+                    getLabelSelect={props.getLabelSelect}
+                    valuteState={props.valuteState}
+                    getIndexValute={props.getIndexValute}
                 />
 
                 <InputComponent
-                    valueInput={this.props.valueInputOne}
-                    changeInput={this.changeInputOne}
+                    valueInput={props.valueInputOne}
+                    changeInput={changeInputOne}
                 />
 
                 <p><strong>Валюта <span className={styleClasses.ValuteName}>
-                    {this.props.valuteState[this.props.getIndexValute(this.props.valuteState, this.props.valuteSelectTwo)].CharCode}</span></strong></p>
+                    {props.valuteState[props.getIndexValute(props.valuteState, props.valuteSelectTwo)].CharCode}</span></strong></p>
 
                 <SelectComponent
-                    getOptions={this.props.getOptions}
-                    changeSelect={this.changeSelectTwo}
-                    valuteSelect={this.props.valuteSelectTwo}
-                    getLabelSelect={this.props.getLabelSelect}
-                    valuteState={this.props.valuteState}
-                    getIndexValute={this.props.getIndexValute}
+                    getOptions={props.getOptions}
+                    changeSelect={changeSelectTwo}
+                    valuteSelect={props.valuteSelectTwo}
+                    getLabelSelect={props.getLabelSelect}
+                    valuteState={props.valuteState}
+                    getIndexValute={props.getIndexValute}
                 />
                 <InputComponent
-                    valueInput={this.props.valueInputTwo}
-                    changeInput={this.changeInputTwo}
+                    valueInput={props.valueInputTwo}
+                    changeInput={changeInputTwo}
                 />
-
-
-
-
             </div>
         );
-    }
 }
 
 export default DefaultCoupleComponent;

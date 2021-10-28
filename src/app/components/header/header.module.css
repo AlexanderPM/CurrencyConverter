@@ -5,7 +5,7 @@
     grid-template-columns: 1fr;
 }
 .header_content{
-    background-color: white;
+    background-color:white;
     color: #2C3E50;
     display: flex;
     align-items: center;
